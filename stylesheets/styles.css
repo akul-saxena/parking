@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
 }
 main {
-  background-color: #fff;
+  background-color: #96729615;
   padding: 30px;
   max-width: 700px;
   margin: 20px auto;
@@ -18,21 +18,17 @@ main {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
 h2 {
   color: #333;
 }
-
 form {
   margin-bottom: 20px;
 }
-
 label {
   display: block;
   margin-bottom: 5px;
   color: #666;
 }
-
 input[type="text"],
 select {
   width: 95%;
@@ -41,7 +37,9 @@ select {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
+hr {
+  border: 1px solid black;
+}
 button[type="submit"] {
   background-color: #7f4caf;
   color: #fff;
@@ -50,16 +48,13 @@ button[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
 }
-
 button[type="submit"]:hover {
   background-color: #b237b6;
 }
-
 ul {
   list-style-type: none;
   padding: 0;
 }
-
 li {
   margin-bottom: 10px;
   padding: 20px;
@@ -67,27 +62,24 @@ li {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
 #availability-info {
   font-weight: bold;
 }
-
+select:hover {
+  cursor: pointer;
+}
 #tickets-list {
   padding: 0;
 }
-
 #tickets-list li {
   border-bottom: 1px solid #ddd;
 }
-
 #tickets-list li:last-child {
   border-bottom: none;
 }
-
 #tickets-list li span {
   font-weight: bold;
 }
-
 #error-message {
   color: #f00;
   margin-bottom: 10px;
