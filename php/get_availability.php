@@ -1,7 +1,5 @@
 <?php
 
-// Include database connection.
-require_once('../db.php');
 /*
  * @file
  * This script calculates and returns the availability of parking slots for different vehicle types.
@@ -13,6 +11,10 @@ require_once('../db.php');
  * The database connection object.
  * 
  */
+
+// Include database connection.
+require_once('../db.php');
+
 class Availability
 {
     private $conn;

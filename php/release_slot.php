@@ -13,6 +13,7 @@
  * The database connection object.
  */
 
+// Include database connection.
 require_once('../db.php');
 
 class ParkingSlotRelease

@@ -11,7 +11,8 @@
  * The database connection object.
  */
 
-require_once('../db.php');
+ // Include database connection.
+ require_once('../db.php');
 
 class TicketRetriever
 {
