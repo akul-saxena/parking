@@ -19,58 +19,65 @@ require_once('../db.php');
 
 class TicketGenerator
 {
-    private $conn;
+	private $conn;
 
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
+	public function __construct($conn)
+	{
+		$this->conn = $conn;
+	}
 
-    // Function to Generate a new Ticket
-    public function generateTicket($vehicleNumber, $vehicleType)
-    {
-        // Find released slot for the given vehicle type
-        $query = "SELECT * FROM tickets WHERE status = 'Released' AND vehicle_type = '$vehicleType'";
-        $result = mysqli_query($this->conn, $query);
-        if (mysqli_num_rows($result) > 0) {
-            // Released slot found, assign new entry to this slot
-            $row = mysqli_fetch_assoc($result);
-            $slotNumber = $row['slot_number'];
-            $query = "SELECT * FROM tickets WHERE status = 'Booked' AND vehicle_type = '$vehicleType' AND slot_number = '$slotNumber' LIMIT 1";
-            $res = mysqli_query($this->conn, $query);
-            if (mysqli_num_rows($res) > 0) {
-                $query = "SELECT MAX(slot_number) AS max_slot FROM tickets WHERE vehicle_type = '$vehicleType'";
-                $result = mysqli_query($this->conn, $query);
-                $row = mysqli_fetch_assoc($result);
-                $slotNumber = $row['max_slot'] + 1;
-                $status = 'Booked';
-            }
-            $status = 'Booked';
-        } else {
-            // No released slots found, find the next available slot
-            $query = "SELECT MAX(slot_number) AS max_slot FROM tickets WHERE vehicle_type = '$vehicleType'";
-            $result = mysqli_query($this->conn, $query);
-            $row = mysqli_fetch_assoc($result);
-            $slotNumber = $row['max_slot'] + 1;
-            $status = 'Booked';
-        }
-
-        // Insert new ticket
-        $query = "INSERT INTO tickets (vehicle_number, vehicle_type, slot_number, time_of_entry, status) VALUES ('$vehicleNumber', '$vehicleType', '$slotNumber', NOW(), '$status')";
-        if (mysqli_query($this->conn, $query)) {
-            echo "Ticket generated successfully.";
-        } else {
-            echo "Error generating ticket.";
-        }
-    }
+	public function generateTicket($vehicleNumber, $vehicleType)
+	{
+		global $conn;
+		// Find released slots for the given vehicle type
+		$query = "SELECT * FROM tickets WHERE status = 'Released' AND vehicle_type = '$vehicleType'";
+		$result = mysqli_query($conn, $query);
+		if (mysqli_num_rows($result) > 0) {
+			// Loop through each released slot
+			while ($row = mysqli_fetch_assoc($result)) {
+				$slotNumber = $row['slot_number'];
+				// Check if the slot is not already booked
+				$query = "SELECT * FROM tickets WHERE status = 'Booked' AND vehicle_type = '$vehicleType' AND slot_number = '$slotNumber' LIMIT 1";
+				$res = mysqli_query($conn, $query);
+				// If the slot is not already booked, assign a new entry
+				if (mysqli_num_rows($res) == 0) {
+					$status = 'Booked';
+					// Insert new ticket
+					$query = "INSERT INTO tickets (vehicle_number, vehicle_type, slot_number, time_of_entry, status) VALUES ('$vehicleNumber', '$vehicleType', '$slotNumber', NOW(), '$status')";
+					if (mysqli_query($conn, $query)) {
+						echo "Ticket generated successfully.";
+						return;
+						// Exit the function after generating the ticket
+					} else {
+						echo "Error generating ticket.";
+						return;
+						// Exit the function if there's an error
+					}
+				}
+			}
+		}
+		// If no released slots are found or all released slots are already booked, find the next available slot
+		$query = "SELECT MAX(slot_number) AS max_slot FROM tickets WHERE vehicle_type = '$vehicleType'";
+		$result = mysqli_query($conn, $query);
+		$row = mysqli_fetch_assoc($result);
+		$slotNumber = $row['max_slot'] + 1;
+		$status = 'Booked';
+		// Insert new ticket
+		$query = "INSERT INTO tickets (vehicle_number, vehicle_type, slot_number, time_of_entry, status) VALUES ('$vehicleNumber', '$vehicleType', '$slotNumber', NOW(), '$status')";
+		if (mysqli_query($conn, $query)) {
+			echo "Ticket generated successfully.";
+		} else {
+			echo "Error generating ticket.";
+		}
+	}
 }
 
-// Instantiate TicketGenerator object with database connection.
+// Instantiate TicketGenerator object
 $ticketGenerator = new TicketGenerator($conn);
 
-// Get input data.
+// Get input data
 $vehicleNumber = $_POST['vehicleNumber'];
 $vehicleType = $_POST['vehicleType'];
 
-// Generate ticket and send response.
-echo $ticketGenerator->generateTicket($vehicleNumber, $vehicleType);
+// Generate ticket
+$ticketGenerator->generateTicket($vehicleNumber, $vehicleType);

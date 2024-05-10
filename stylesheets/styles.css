@@ -1,22 +1,23 @@
 body {
   font-family: Arial, sans-serif;
-
 }
-main{
-  background-color: #FFF;
-  padding: 40px;
-  max-width: 900px;
+main {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 700px;
   margin: 20px auto;
   border: #000 solid;
   border-radius: 10px;
 }
-.container,.availability {
-  max-width: 700px;
+.container,
+.availability {
+  max-width: 650px;
   margin: 50px auto;
   padding: 40px;
-  background-color: #CCC !important;
+  background-color: #ccc;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
 h2 {
   color: #333;
@@ -42,7 +43,7 @@ select {
 }
 
 button[type="submit"] {
-  background-color: #4caf50;
+  background-color: #7f4caf;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -51,7 +52,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #b237b6;
 }
 
 ul {
