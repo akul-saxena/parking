@@ -1,0 +1,93 @@
+body {
+  font-family: Arial, sans-serif;
+
+}
+main{
+  background-color: #FFF;
+  padding: 40px;
+  max-width: 900px;
+  margin: 20px auto;
+  border: #000 solid;
+  border-radius: 10px;
+}
+.container,.availability {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #CCC !important;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+
+h2 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+input[type="text"],
+select {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#availability-info {
+  font-weight: bold;
+}
+
+#tickets-list {
+  padding: 0;
+}
+
+#tickets-list li {
+  border-bottom: 1px solid #ddd;
+}
+
+#tickets-list li:last-child {
+  border-bottom: none;
+}
+
+#tickets-list li span {
+  font-weight: bold;
+}
+
+#error-message {
+  color: #f00;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Parking System</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="../stylesheets/styles.css" />
+  </head>
+
+  <body>
+    <main>
+      <!-- Availability Section -->
+      <div id="availability container">
+        <h2>Availability</h2>
+        <p id="availability-info"></p>
+        <!-- Placeholder for availability information -->
+      </div>
+
+      <!-- Tickets Section -->
+      <div id="tickets container">
+        <h2>Tickets</h2>
+        <ul id="tickets-list"></ul>
+        <!-- Placeholder for tickets list -->
+      </div>
+
+      <!-- Generate Ticket Section -->
+      <div id="generate-ticket container">
+        <h2>Generate Ticket</h2>
+        <form id="generate-ticket-form">
+          <label for="vehicle-number">Vehicle Number:</label>
+          <input
+            type="text"
+            id="vehicle-number"
+            required
+            placeholder="Format: AB 00 CD 0000"
+          />
+          <!-- Input field for vehicle number -->
+          <label for="vehicle-type">Vehicle Type:</label>
+          <select id="vehicle-type" required>
+            <option value="2-wheeler">2 Wheeler</option>
+            <option value="4-wheeler">4 Wheeler</option>
+          </select>
+          <!-- Dropdown for vehicle type -->
+          <button type="submit">Generate Ticket</button>
+          <!-- Button to generate ticket -->
+        </form>
+      </div>
+
+      <!-- Release Slot Section -->
+      <div id="release-slot container">
+        <h2>Release Slot</h2>
+        <form id="release-slot-form">
+          <label for="release-vehicle-number">Vehicle Number:</label>
+          <input type="text" id="release-vehicle-number" required />
+          <!-- Input field for releasing vehicle by number -->
+          <button type="submit">Release Slot</button>
+          <!-- Button to release slot -->
+        </form>
+      </div>
+
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- External JavaScript File -->
+      <script src="../scripts/script.js"></script>
+    </main>
+  </body>
+</html>
