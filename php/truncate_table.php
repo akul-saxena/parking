@@ -1,5 +1,18 @@
 <?php
 
+/*
+ * @file
+ * This script truncates the ticket table.
+ * 
+ * @return void
+ * There's no return value from this script.
+ * 
+ * @param string $tableName
+ * The name of the table to truncate.
+ * @param mysqli $conn
+ * The database connection.
+ */
+
 // Include the database connection file.
 require_once('db.php');
 
@@ -11,23 +24,13 @@ class TableTruncator
     private $tableName;
     private $conn;
 
-    /**
-     * Constructs a new TableTruncator object.
-     *
-     * @param string $tableName
-     *   The name of the table to truncate.
-     * @param mysqli $conn
-     *   The database connection.
-     */
     public function __construct($tableName, $conn)
     {
         $this->tableName = $tableName;
         $this->conn = $conn;
     }
 
-    /**
-     * Truncate the table.
-     */
+    // Function to Truncate the Table
     public function truncateTable()
     {
         $sql = "TRUNCATE TABLE " . $this->tableName;
@@ -39,6 +42,10 @@ class TableTruncator
         $this->conn->close();
     }
 }
+
+// Get input data.
 $tableName = 'tickets';
+// Instantiate TableTruncator object with database connection.
 $tableTruncator = new TableTruncator($tableName, $conn);
+// Truncate Table
 $tableTruncator->truncateTable();

@@ -3,8 +3,10 @@
 /*
  * @file
  * This script retrieves tickets information from the database.
+ * 
  * @return void
  * There's no return value from this script.
+ * 
  * @param mysqli_connection $conn
  * The database connection object.
  */
@@ -20,6 +22,7 @@ class TicketRetriever
         $this->conn = $conn;
     }
 
+    // Function to Retreive Tickets
     public function retrieveTickets()
     {
         $query = "SELECT * FROM tickets";

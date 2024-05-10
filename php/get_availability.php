@@ -5,10 +5,13 @@ require_once('../db.php');
 /*
  * @file
  * This script calculates and returns the availability of parking slots for different vehicle types.
+ * 
  * @return string
  * A formatted response indicating the availability of parking slots for 2 wheelers and 4 wheelers.
+ * 
  * @param mysqli_connection $conn
  * The database connection object.
+ * 
  */
 class Availability
 {
@@ -19,6 +22,7 @@ class Availability
         $this->conn = $conn;
     }
 
+    // Function to get Availability
     public function getAvailability()
     {
         $query = "SELECT COUNT(*) AS total_slots, vehicle_type FROM tickets WHERE status = 'Booked' GROUP BY vehicle_type";

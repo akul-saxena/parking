@@ -2,9 +2,11 @@
 
 /*
  * @file
- * This script generates a ticket for a vehicle entry into a parking lot.
+ * This code generates a ticket for a vehicle entry into a parking lot.
+ * 
  * @return void
  * This script echoes a message indicating success or failure of ticket generation.
+ * 
  * @param string $vehicleNumber
  * The vehicle number for which the ticket is generated.
  * @param string $vehicleType
@@ -24,6 +26,7 @@ class TicketGenerator
         $this->conn = $conn;
     }
 
+    // Function to Generate a new Ticket
     public function generateTicket($vehicleNumber, $vehicleType)
     {
         // Find released slot for the given vehicle type

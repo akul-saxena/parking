@@ -3,8 +3,10 @@
 /*
  * @file
  * This script releases a parking slot for a vehicle.
+ * 
  * @return void
  * There's no return value from this script.
+ * 
  * @param string $vehicleNumber
  * The vehicle number for which the parking slot is released.
  * @param mysqli_connection $conn
@@ -22,6 +24,7 @@ class ParkingSlotRelease
         $this->conn = $conn;
     }
 
+    // Function to release a Parking Slot
     public function releaseParkingSlot($vehicleNumber)
     {
         $query = "UPDATE tickets SET status = 'Released', time_of_exit = NOW() WHERE vehicle_number = '$vehicleNumber' AND status = 'Booked'";
